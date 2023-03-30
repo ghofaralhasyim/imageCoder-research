@@ -6,7 +6,7 @@ plt.rcParams["figure.autolayout"] = True
 
 columns = ['loss', 'val_loss']
 
-df = pd.read_csv("./bin/conv2d-gru/training_val_losses_1.csv", usecols=columns)
+df = pd.read_csv("./report/conv2d-gru/training_val_losses_0.csv", skiprows=0, usecols=columns)
 df.plot()
 plt.xlabel('epochs')
 
