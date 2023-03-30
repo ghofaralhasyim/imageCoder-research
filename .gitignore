@@ -1,2 +1,6 @@
 /datasets
 /bin
+
+__pycache__/
+*.py[cod]
+
