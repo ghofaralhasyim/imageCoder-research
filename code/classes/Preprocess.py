@@ -19,7 +19,7 @@ class DataPrepocessor:
         self.save_resized_img_arrays(resized_img_arrays, sample_ids, input_path)
 
     def get_img_features(self, png_path):
-        img_features = self.resize_img(png_path)
+        img_features = self.resize_img1(png_path)
         assert(img_features.shape == (256,256,3))
         return img_features
     
@@ -50,6 +50,15 @@ class DataPrepocessor:
     def resize_img(self, img_path):
         img = cv2.imread(img_path)
         img = cv2.resize(img, (256, 256))
+        img = img.astype('float32')
+        img /= 255
+        return img
+    
+    def resize_img1(self, img_path):
+        img = cv2.imread(img_path)
+        resized = cv2.resize(img, (200,200), interpolation=cv2.INTER_CUBIC)
+        img = 255 * np.ones(shape=(256,256,3))
+        img[27:227, 27:227,:] = resized
         img = img.astype('float32')
         img /= 255
         return img
